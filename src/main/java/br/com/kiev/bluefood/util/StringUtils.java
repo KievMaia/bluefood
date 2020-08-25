@@ -1,5 +1,8 @@
 package br.com.kiev.bluefood.util;
 
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 public class StringUtils {
 
 	//Verifica se a String está vazia.
@@ -20,8 +23,7 @@ public class StringUtils {
 		}
 		
 		//Interface do Spring Security que encripta a senha.
-		//PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-		//return encoder.encode(rawString);
-		return rawString;
+		PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		return encoder.encode(rawString);
 	}
 }
