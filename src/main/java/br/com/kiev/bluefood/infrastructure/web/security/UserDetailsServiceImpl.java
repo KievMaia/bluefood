@@ -6,7 +6,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import br.com.kiev.bluefood.domain.cliente.Cliente;
 import br.com.kiev.bluefood.domain.cliente.ClienteRepository;
 import br.com.kiev.bluefood.domain.restaurante.RestauranteRepository;
 import br.com.kiev.bluefood.domain.usuario.Usuario;

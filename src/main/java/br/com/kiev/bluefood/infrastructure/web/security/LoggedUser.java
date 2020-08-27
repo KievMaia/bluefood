@@ -13,6 +13,8 @@ import br.com.kiev.bluefood.domain.usuario.Usuario;
 
 public class LoggedUser implements UserDetails{
 
+	private static final long serialVersionUID = 1L;
+	
 	private Usuario usuario;
 	private Role role;
 	private Collection<? extends GrantedAuthority> roles;
@@ -30,7 +32,7 @@ public class LoggedUser implements UserDetails{
 		}
 		
 		this.role = role;
-		this.roles = List.of(new SimpleGrantedAuthority("ROLE" + role));
+		this.roles = List.of(new SimpleGrantedAuthority("ROLE_" + role));
 	}
 	
 	@Override

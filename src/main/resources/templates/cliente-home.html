@@ -1,25 +1,10 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>BlueFood</title>
-        <link rel="stylesheet" type="text/css" href="css/bf_estiloSistema.css" />
-    </head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  layout:decorate="~{layout}">
+	  
     <body>
-        <header>
-            <div id="divLogoTipoSistema">
-                <span id="spanAuxiliarDeAlinhamentoVertical"></span>
-                <a href="">
-                <img src="images/bf_logotipoSistema.png" id="imgLogoTipoSistema">
-                </a>
-            </div>
-            <div id="divUsuarioLogado">
-                            Olá, nome do usuário!
-              <!--  <br/>
-                <img src="images/bf_iconeCarrinho.png" id="imgIconeCarrinho"/>-->
-            </div>
-        </header>
-        <br><br>
+    	<div layout:fragment="content">
         <!-- Cabeçalho - Fim -->
                 
            <div>
@@ -33,51 +18,13 @@
            </div>
            
           <div id="divCategoriasComidaGeral">
-            <div id="divCategoriasComidaOpcao">
+            <div id="divCategoriasComidaOpcao" th:each="categoria : ${categorias}">
                 <a href="#">
-                <img src="images/sys_categoriaChurrasco.png" id="imgCategoriaComida"/>
+                <img th:src="@{/images/categoria/} + ${categoria.imagem}" id="imgCategoriaComida"/>
                 <br/>
-                <span>Churrasco</span>
+                <span th:text="${categoria.nome}"></span>
                 </a>
             </div>
-            
-            <div id="divCategoriasComidaOpcao">
-                <a href="#">
-                <img src="images/sys_categoriaHamburguer.png" id="imgCategoriaComida"/>
-                <br/>
-                <span>Hamburguer</span>
-                </a>
-            </div>
-            
-            <div id="divCategoriasComidaOpcao" >
-                <a href="#">
-                <img src="images/sys_categoriaPizza.png" id="imgCategoriaComida"/>
-                <br/>
-                <span>Pizza</span>
-                </a>
-            </div>        
-            
-            <div id="divCategoriasComidaOpcao">
-                <a href="#">
-                <img src="images/sys_categoriaSalada.png" id="imgCategoriaComida"/>
-                <br/>
-                <span>Salada</span>
-                </a>
-            </div>
-            
-            <div id="divCategoriasComidaOpcao">
-                <a href="#">
-                <img src="images/sys_categoriaSobremesa.png" id="imgCategoriaComida"/>
-                <br/>
-                <span>Sobremesa</span>
-                </a>
-            </div>
-           </div>
-           
-           <div>
-            <h1>Cupons disponíveis</h1>
-            <input type="button" value="10% Hamburguer" onClick="location.href='clienteBusca.html';" /><br/>
-            <input type="button" value="15% Pizza" onClick="location.href='clienteBusca.html';" /><br/>
            </div>
                 
             <div>
@@ -89,9 +36,10 @@
             
             <div>
                 <h1>Conta</h1>
-                <input type="button" value="Meus dados" onClick="location.href='clienteCadastro.html';" /><br/>
-                <input type="button" value="Sair" onClick="location.href='index.html';" /><br/>
+                <input type="button" value="Meus dados" th:onclick="'location.href=\'' + @{/cliente/edit} + '\';'" /><br/>
+                <input type="button" value="Sair" th:onclick="'location.href=\'' + @{/logout} + '\';'" /><br/>
             </div>
+           </div>
         <!-- Rodapé - Início -->
     </body>
 </html>

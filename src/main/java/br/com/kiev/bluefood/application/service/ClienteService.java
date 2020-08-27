@@ -1,5 +1,7 @@
 package br.com.kiev.bluefood.application.service;
 
+import java.util.NoSuchElementException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,16 +21,16 @@ public class ClienteService {
 	private RestauranteRepository restauranteRepository;
 	
 	@Transactional
-	public void saveCliente(Cliente cliente) throws ValidationException{
-		
-		if(!validateEmail(cliente.getEmail(), cliente.getId())) {
-			throw new ValidationException("O e-mail está duplicado!");
+	public void saveCliente(Cliente cliente) throws ValidationException {
+		if (!validateEmail(cliente.getEmail(), cliente.getId())) {
+			throw new ValidationException("O e-mail está duplicado");
 		}
 		
 		if (cliente.getId() != null) {
-			Cliente clienteDB = clienteRepository.findById(cliente.getId()).orElseThrow();
+			Cliente clienteDB = clienteRepository.findById(cliente.getId()).orElseThrow(NoSuchElementException::new);
 			cliente.setSenha(clienteDB.getSenha());
-		}else {
+		
+		} else {
 			cliente.encryptPassword();
 		}
 		
@@ -45,11 +47,11 @@ public class ClienteService {
 		Cliente cliente = clienteRepository.findByEmail(email);
 		
 		if (cliente != null) {
-			if(id == null) {
+			if (id == null) {
 				return false;
 			}
 			
-			if (cliente.getId().equals(id)) {
+			if(!cliente.getId().equals(id)) {
 				return false;
 			}
 		}
