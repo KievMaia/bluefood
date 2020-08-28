@@ -1,6 +1,7 @@
 package br.com.kiev.bluefood.infrastructure.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,7 @@ public class ImageController {
 	
 	// Anotação para informar que o conteúdo destes bytes tem que ser colocado no
 	// corpo do protocolo HTTP.
-	@GetMapping(path = "/images/{type}/{imgName}")
+	@GetMapping(path = "/images/{type}/{imgName}", produces = {MediaType.IMAGE_PNG_VALUE, MediaType.IMAGE_JPEG_VALUE})
 	@ResponseBody
 	public byte[] getBytes(@PathVariable("type") String type, @PathVariable("imgName") String imgName) {
 
