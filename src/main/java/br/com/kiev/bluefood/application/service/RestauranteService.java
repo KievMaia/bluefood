@@ -11,6 +11,7 @@ import br.com.kiev.bluefood.domain.cliente.ClienteRepository;
 import br.com.kiev.bluefood.domain.restaurante.Restaurante;
 import br.com.kiev.bluefood.domain.restaurante.RestauranteRepository;
 import br.com.kiev.bluefood.domain.restaurante.SearchFilter;
+import br.com.kiev.bluefood.domain.restaurante.SearchFilter.SearchType;
 
 @Service
 public class RestauranteService {
@@ -64,6 +65,15 @@ public class RestauranteService {
 	}
 	
 	public List<Restaurante> search(SearchFilter filter){
-		return restauranteRepository.findAll();
+		List<Restaurante> restaurantes;
+		
+		if (filter.getSearchType() == SearchType.Texto) {
+			restaurantes = restauranteRepository.findByNomeIgnoreCaseContaining(filter.getTexto());
+		}else if (filter.getSearchType() == SearchType.Categoria) {
+			restaurantes = restauranteRepository.findByCategorias_Id(filter.getCategoriaId());
+		}else {
+			throw new IllegalStateException("O tipo de busca" + filter.getSearchType() + " não é suportado");
+		}
+		return restaurantes;
 	}
 }

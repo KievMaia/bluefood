@@ -56,7 +56,7 @@ public class InsertDataForTesting {
 		r.setSenha(StringUtils.encrypt("r"));
 		r.setCnpj("00000000000101");
 		r.setTaxaEntrega(BigDecimal.valueOf(3.2));
-		r.setTelefone("48999995875");
+		r.setTelefone("99876671010");
 		r.getCategorias().add(categoriaSanduiche);
 		r.getCategorias().add(categoriaSobremesa);
 		r.setLogotipo("0001-logo.png");
@@ -65,12 +65,12 @@ public class InsertDataForTesting {
 		restaurantes.add(r);
 		
 		r = new Restaurante();
-		r.setNome("Mc Naldos");
+		r.setNome("Mc Naldo's");
 		r.setEmail("r2@bluefood.com.br");
 		r.setSenha(StringUtils.encrypt("r"));
 		r.setCnpj("00000000000102");
 		r.setTaxaEntrega(BigDecimal.valueOf(4.5));
-		r.setTelefone("4899866325");
+		r.setTelefone("99876671011");
 		r.getCategorias().add(categoriaSanduiche);
 		r.getCategorias().add(categoriaSobremesa);
 		r.setLogotipo("0002-logo.png");
@@ -84,7 +84,7 @@ public class InsertDataForTesting {
 		r.setSenha(StringUtils.encrypt("r"));
 		r.setCnpj("00000000000103");
 		r.setTaxaEntrega(BigDecimal.valueOf(12.2));
-		r.setTelefone("48966523254");
+		r.setTelefone("99876671012");
 		r.getCategorias().add(categoriaSanduiche);
 		r.getCategorias().add(categoriaSobremesa);
 		r.setLogotipo("0003-logo.png");
@@ -93,12 +93,12 @@ public class InsertDataForTesting {
 		restaurantes.add(r);
 		
 		r = new Restaurante();
-		r.setNome("Pizza Burt");
+		r.setNome("Pizza Brut");
 		r.setEmail("r4@bluefood.com.br");
 		r.setSenha(StringUtils.encrypt("r"));
 		r.setCnpj("00000000000104");
 		r.setTaxaEntrega(BigDecimal.valueOf(9.8));
-		r.setTelefone("48984547854");
+		r.setTelefone("99876671013");
 		r.getCategorias().add(categoriaPizza);
 		r.getCategorias().add(categoriaSobremesa);
 		r.setLogotipo("0004-logo.png");
@@ -112,7 +112,7 @@ public class InsertDataForTesting {
 		r.setSenha(StringUtils.encrypt("r"));
 		r.setCnpj("00000000000105");
 		r.setTaxaEntrega(BigDecimal.valueOf(14.9));
-		r.setTelefone("48984623214");
+		r.setTelefone("99876671014");
 		r.getCategorias().add(categoriaJapones);
 		r.getCategorias().add(categoriaSobremesa);
 		r.setLogotipo("0005-logo.png");
@@ -120,7 +120,7 @@ public class InsertDataForTesting {
 		restauranteRepository.save(r);
 		restaurantes.add(r);
 		
-		Restaurante[] array = new Restaurante[restaurantes.size()];
+		Restaurante[] array = new Restaurante[restaurantes.size()]; 
 		return restaurantes.toArray(array);
 		
 	}
@@ -167,7 +167,7 @@ public class InsertDataForTesting {
 		ic.setNome("Cheese burger Simples");
 		ic.setPreco(BigDecimal.valueOf(17.8));
 		ic.setRestaurante(restaurantes[0]);
-		ic.setDestaque(true);
+		ic.setDestaque(false);
 		ic.setImagem("0006-comida.png");
 		itemCardapioRepository.save(ic);
 		
@@ -177,7 +177,7 @@ public class InsertDataForTesting {
 		ic.setNome("Sanduíche natural da casa");
 		ic.setPreco(BigDecimal.valueOf(11.8));
 		ic.setRestaurante(restaurantes[0]);
-		ic.setDestaque(true);
+		ic.setDestaque(false);
 		ic.setImagem("0007-comida.png");
 		itemCardapioRepository.save(ic);
 		
@@ -187,7 +187,7 @@ public class InsertDataForTesting {
 		ic.setNome("Refrigerante de cola");
 		ic.setPreco(BigDecimal.valueOf(9));
 		ic.setRestaurante(restaurantes[0]);
-		ic.setDestaque(true);
+		ic.setDestaque(false);
 		ic.setImagem("0004-comida.png");
 		itemCardapioRepository.save(ic);
 		
@@ -197,7 +197,7 @@ public class InsertDataForTesting {
 		ic.setNome("Suco de Laranja");
 		ic.setPreco(BigDecimal.valueOf(9));
 		ic.setRestaurante(restaurantes[0]);
-		ic.setDestaque(true);
+		ic.setDestaque(false);
 		ic.setImagem("0005-comida.png");
 		itemCardapioRepository.save(ic);
 		
@@ -207,7 +207,7 @@ public class InsertDataForTesting {
 		ic.setNome("Pizza de Calabresa");
 		ic.setPreco(BigDecimal.valueOf(38.9));
 		ic.setRestaurante(restaurantes[3]);
-		ic.setDestaque(true);
+		ic.setDestaque(false);
 		ic.setImagem("0002-comida.png");
 		itemCardapioRepository.save(ic);
 		
@@ -217,7 +217,7 @@ public class InsertDataForTesting {
 		ic.setNome("Uramaki");
 		ic.setPreco(BigDecimal.valueOf(16.8));
 		ic.setRestaurante(restaurantes[4]);
-		ic.setDestaque(true);
+		ic.setDestaque(false);
 		ic.setImagem("0003-comida.png");
 		itemCardapioRepository.save(ic);
 	}

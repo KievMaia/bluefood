@@ -3,6 +3,11 @@
     font-family: "Verdana";
 }
 
+input#inputLargo		
+7	{		
+8	    width: 300px;		
+9	}
+
 body
 {
     text-align: center;
@@ -23,6 +28,7 @@ a:hover
 div#divLogoTipoSistema
 {    
     background-color: #1e9bde;
+    width: 100%;
     height: 70px;
 }
 
@@ -76,6 +82,8 @@ div#mensagemDeErro
 div#divUsuarioLogado
 {
     background-color: #7bc2e5;
+    width: 100%;
+    height: auto;
     color: #ffffff;
     line-height: 40px;
 }
@@ -174,8 +182,25 @@ td
 div#divCategoriasComidaOpcao
 {
     background-color: #ffffff;
+    width: 20%;
     height: 130px;
     float: left;
+}
+
+div#divRestaurantesOpcao
+{
+	background-color: #ffffff;		
+	width: 400px;		
+	height: auto;		
+	margin-left: auto;		
+	margin-right: auto;
+}
+
+div#divLarguraPadrao
+{
+	width: 400px;		
+	margin-left: auto;		
+	margin-right: auto;
 }
 
 /* Alinha os elementos justificado no centro da página*/
@@ -210,6 +235,11 @@ input#inputLargo
 img#imgRestauranteOpcao
 {
     height: 130px;
+}
+
+img#imgRestauranteBusca
+{
+	height: 130px;
 }
 
 span#restauranteOpcaoTitulo
