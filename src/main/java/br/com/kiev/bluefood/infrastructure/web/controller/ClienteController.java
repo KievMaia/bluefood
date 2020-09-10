@@ -20,6 +20,8 @@ import br.com.kiev.bluefood.application.service.RestauranteService;
 import br.com.kiev.bluefood.application.service.ValidationException;
 import br.com.kiev.bluefood.domain.cliente.Cliente;
 import br.com.kiev.bluefood.domain.cliente.ClienteRepository;
+import br.com.kiev.bluefood.domain.pedido.Pedido;
+import br.com.kiev.bluefood.domain.pedido.PedidoRepository;
 import br.com.kiev.bluefood.domain.restaurante.CategoriaRestaurante;
 import br.com.kiev.bluefood.domain.restaurante.CategoriaRestauranteRepository;
 import br.com.kiev.bluefood.domain.restaurante.ItemCardapio;
@@ -50,6 +52,9 @@ public class ClienteController {
 	
 	@Autowired
 	private RestauranteRepository restauranteRepository;
+	
+	@Autowired
+	private PedidoRepository pedidoRepository;
 
 	@GetMapping(path = "/home")
 	public String home(Model model) {
@@ -57,7 +62,10 @@ public class ClienteController {
 		List<CategoriaRestaurante> categorias = categoriaRestauranteRepository.findAll(Sort.by("nome"));
 		model.addAttribute("categorias", categorias);
 		model.addAttribute("searchFilter", new SearchFilter());
-
+		
+		List<Pedido> pedidos = pedidoRepository.listPedidosByCliente_id(SecurityUtils.loggedCliente().getId());
+		model.addAttribute("pedidos", pedidos);
+		
 		return "cliente-home";
 	}
 
