@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.kiev.bluefood.domain.cliente.Cliente;
 import br.com.kiev.bluefood.domain.cliente.ClienteRepository;
+import br.com.kiev.bluefood.domain.restaurante.ItemCardapio;
+import br.com.kiev.bluefood.domain.restaurante.ItemCardapioRepository;
 import br.com.kiev.bluefood.domain.restaurante.Restaurante;
 import br.com.kiev.bluefood.domain.restaurante.RestauranteRepository;
 import br.com.kiev.bluefood.domain.restaurante.SearchFilter;
@@ -25,16 +27,22 @@ public class RestauranteService {
 	@Autowired
 	private ImageService imageService;
 	
+	@Autowired
+	private ItemCardapioRepository itemCardapioRepository;
+	
 	@Transactional
-	public void saveRestaurante(Restaurante restaurante) throws ValidationException{
-		if(!validateEmail(restaurante.getEmail(), restaurante.getId())) {
-			throw new ValidationException("O e-mail está duplicado!");
+	public void saveRestaurante(Restaurante restaurante) throws ValidationException {
+		if (!validateEmail(restaurante.getEmail(), restaurante.getId())) {
+			throw new ValidationException("O e-mail está duplicado");
 		}
 		
 		if (restaurante.getId() != null) {
 			Restaurante restauranteDB = restauranteRepository.findById(restaurante.getId()).orElseThrow();
 			restaurante.setSenha(restauranteDB.getSenha());
-		}else {
+			restaurante.setLogotipo(restauranteDB.getLogotipo());
+			restauranteRepository.save(restaurante);
+		
+		} else {
 			restaurante.encryptPassword();
 			restaurante = restauranteRepository.save(restaurante);
 			restaurante.setLogotipoFileName();
@@ -52,11 +60,11 @@ public class RestauranteService {
 		Restaurante restaurante = restauranteRepository.findByEmail(email);
 		
 		if (restaurante != null) {
-			if(id == null) {
+			if (id == null) {
 				return false;
 			}
 			
-			if (restaurante.getId().equals(id)) {
+			if(!restaurante.getId().equals(id)) {
 				return false;
 			}
 		}
@@ -75,5 +83,12 @@ public class RestauranteService {
 			throw new IllegalStateException("O tipo de busca" + filter.getSearchType() + " não é suportado");
 		}
 		return restaurantes;
+	}
+	
+	@Transactional
+	public void saveItemCardapio(ItemCardapio itemCardapio) {
+		itemCardapio = itemCardapioRepository.save(itemCardapio);
+		itemCardapio.setImagemFileName();
+		imageService.uploadComida(itemCardapio.getImagemFile(), itemCardapio.getImagem());
 	}
 }
