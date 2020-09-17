@@ -3,6 +3,7 @@ package br.com.kiev.bluefood.domain.pedido;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -98,7 +99,7 @@ public class Pedido implements Serializable{
 	private BigDecimal total;
 	
 	@OneToMany(mappedBy = "id.pedido", fetch = FetchType.EAGER)
-	private Set<ItemPedido> itens;
+	private Set<ItemPedido> itens  = new HashSet<>();;
 	
 	@OneToOne(mappedBy = "pedido")
 	private Pagamento pagamento;
