@@ -13,8 +13,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-//Indica que você escolhe qual parâmetros será aplicado o equal e hashcode. 
-//Mas nesse caso o callSuper indica que é da superClasse.
+//Indica que vocï¿½ escolhe qual parï¿½metros serï¿½ aplicado o equal e hashcode. 
+//Mas nesse caso o callSuper indica que ï¿½ da superClasse.
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
 @Entity
 @Table(name = "cliente")
@@ -22,13 +22,13 @@ public class Cliente extends Usuario{
 
 	private static final long serialVersionUID = 1L;
 	
-	@NotBlank(message = "O CPF não pode ser vazio")
-	@Pattern(regexp = "[0-9]{11}", message = "O CPF possui formato inválido")
+	@NotBlank(message = "O CPF nÃ£o pode ser vazio")
+	@Pattern(regexp = "[0-9]{11}", message = "O CPF possui formato invÃ¡lido")
 	@Column(length = 11, nullable = false)
 	private String cpf;
 	
-	@NotBlank(message = "O CEP não pode ser vazio")
-	@Pattern(regexp = "[0-9]{8}", message = "O CEP possui formato inválido")
+	@NotBlank(message = "O CEP nÃ£o pode ser vazio")
+	@Pattern(regexp = "[0-9]{8}", message = "O CEP possui formato invÃ¡lido")
 	@Column(length = 8)
 	private String cep;
 	

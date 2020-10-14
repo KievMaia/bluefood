@@ -147,7 +147,7 @@ public class InsertDataForTesting {
 		List<Cliente> clientes = new ArrayList<>();
 		
 		Cliente c = new Cliente();
-		c.setNome("João Silva");
+		c.setNome("Joï¿½o Silva");
 		c.setEmail("joao@bluefood.com.br");
 		c.setSenha(StringUtils.encrypt("c"));
 		c.setCep("88144752");
@@ -173,7 +173,7 @@ public class InsertDataForTesting {
 	private void itensCardapio(Restaurante[] restaurantes) {
 		ItemCardapio ic = new ItemCardapio();
 		ic.setCategoria("Sanduiche");
-		ic.setDescricao("Delicioso sanduíche com molho");
+		ic.setDescricao("Delicioso sanduÃ­che com molho");
 		ic.setNome("Double Cheese Burger Special");
 		ic.setPreco(BigDecimal.valueOf(23.8));
 		ic.setRestaurante(restaurantes[0]);
@@ -183,7 +183,7 @@ public class InsertDataForTesting {
 		
 		ic = new ItemCardapio();
 		ic.setCategoria("Sanduiche");
-		ic.setDescricao("Sanduíche padrão que mata a fome");
+		ic.setDescricao("Sanduï¿½che padrÃ£o que mata a fome");
 		ic.setNome("Cheese burger Simples");
 		ic.setPreco(BigDecimal.valueOf(17.8));
 		ic.setRestaurante(restaurantes[0]);
@@ -193,8 +193,8 @@ public class InsertDataForTesting {
 		
 		ic = new ItemCardapio();
 		ic.setCategoria("Sanduiche");
-		ic.setDescricao("Sanduíche natural com peito de peru");
-		ic.setNome("Sanduíche natural da casa");
+		ic.setDescricao("SanduÃ­che natural com peito de peru");
+		ic.setNome("SanduÃ­che natural da casa");
 		ic.setPreco(BigDecimal.valueOf(11.8));
 		ic.setRestaurante(restaurantes[0]);
 		ic.setDestaque(false);
@@ -203,7 +203,7 @@ public class InsertDataForTesting {
 		
 		ic = new ItemCardapio();
 		ic.setCategoria("Bebida");
-		ic.setDescricao("Refrigerante com gás");
+		ic.setDescricao("Refrigerante com gÃ¡s");
 		ic.setNome("Refrigerante de cola");
 		ic.setPreco(BigDecimal.valueOf(9));
 		ic.setRestaurante(restaurantes[0]);

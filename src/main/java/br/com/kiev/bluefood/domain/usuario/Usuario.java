@@ -16,38 +16,38 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-//Anotação Lombok que cria automaticamente os getters and setters e também o equals e hascode.
+//Anotaï¿½ï¿½o Lombok que cria automaticamente os getters and setters e tambï¿½m o equals e hascode.
 @Getter
 @Setter
-//onlyExplicitlyInclud = true, indica que você escolhe qual parâmetros será aplicado o equal e hashcode.
+//onlyExplicitlyInclud = true, indica que vocï¿½ escolhe qual parï¿½metros serï¿½ aplicado o equal e hashcode.
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-//Esta marcação indica a JPA que apesar desta classe não ser uma entidade ela faz parte de uma em que a estendeu.
+//Esta marcaï¿½ï¿½o indica a JPA que apesar desta classe nï¿½o ser uma entidade ela faz parte de uma em que a estendeu.
 @MappedSuperclass
 public class Usuario implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	//Indica que apenas no id que está sendo incluído o equals e hashcode.
+	//Indica que apenas no id que estï¿½ sendo incluï¿½do o equals e hashcode.
 	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue
 	private Integer id;
 	
-	@NotBlank(message = "O nome não pode ser vazio")
-	@Size(max = 80, message = "O nome é muito grande")
+	@NotBlank(message = "O nome nÃ£o pode ser vazio")
+	@Size(max = 80, message = "O nome Ã© muito grande")
 	private String nome;
 	
-	@NotBlank(message = "O e-mail não pode ser vazio")
-	@Size(max = 60, message = "O e-mail é muito grande")
-	@Email(message = "O e-mail é inválido")
+	@NotBlank(message = "O e-mail nÃ£o pode ser vazio")
+	@Size(max = 60, message = "O e-mail Ã© muito grande")
+	@Email(message = "O e-mail Ã© invÃ¡lido")
 	private String email;
 	
-	@NotBlank(message = "A senha não pode ser vazia")
-	@Size(max = 80, message = "A senha é muito grande")
+	@NotBlank(message = "A senha nÃ£o pode ser vazia")
+	@Size(max = 80, message = "A senha Ã© muito grande")
 	private String senha;
 	
-	@NotBlank(message = "O telefone não pode ser vazio")
-	@Pattern(regexp = "[0-9]{10,11}", message = "O telefone possui formato inválido")
+	@NotBlank(message = "O telefone nÃ£o pode ser vazio")
+	@Pattern(regexp = "[0-9]{10,11}", message = "O telefone possui formato invÃ¡lido")
 	@Column(length = 11, nullable = false)
 	private String telefone;
 	

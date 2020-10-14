@@ -19,7 +19,7 @@ import br.com.kiev.bluefood.util.FileType;
 @Constraint(validatedBy = UploadValidator.class)
 public @interface UploadConstrain {
 
-	String message() default "Arquivo inv·lido";
+	String message() default "Arquivo inv√°lido";
 	FileType[] acceptedTypes();
 	
 	Class<?>[] groups() default {};

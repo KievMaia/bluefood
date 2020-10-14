@@ -18,9 +18,9 @@ import br.com.kiev.bluefood.domain.cliente.Cliente;
 import br.com.kiev.bluefood.domain.restaurante.CategoriaRestauranteRepository;
 import br.com.kiev.bluefood.domain.restaurante.Restaurante;
 
-//Anotação do spring informando que essa classe é um controller
+//AnotaÃ§Ã£o do spring informando que essa classe Ã© um controller
 @Controller
-//Mapeamento informando que este controller estará acessível para o público pelo /public na barra de endereço
+//Mapeamento informando que este controller estarÃ¡ acessÃ­vel para o pÃºblico pelo /public na barra de endereÃ§o
 @RequestMapping(path = "/public")
 public class PublicController {
 	
@@ -35,8 +35,8 @@ public class PublicController {
 	private CategoriaRestauranteRepository categoriaRestauranteRepository;
 	
 	//Pega os atributos dos campos de texto do html
-	// O model é o tipo de Objeto recebido pelo html, que deve adicionar o atributo, neste caso Cliente(), 
-	//que recebe um nome "cliente" e retorna para a mesma página
+	// O model Ã© o tipo de Objeto recebido pelo html, que deve adicionar o atributo, neste caso Cliente(), 
+	//que recebe um nome "cliente" e retorna para a mesma pÃ¡gina
 	@GetMapping("/cliente/new")
 	public String newCliente(Model model) {	
 		model.addAttribute("cliente", new Cliente());
@@ -52,8 +52,8 @@ public class PublicController {
 		return "restaurante-cadastro";
 	}
 	
-	//Neste caso agora o post que recebe os dados do html e processa no método save de persistência
-	//A anotação @Valid, valida se o Cliente está válido de acordo com com as regras de validação anotadas na classe Cliente.
+	//Neste caso agora o post que recebe os dados do html e processa no mÃ©todo save de persistï¿½ncia
+	//A anotaÃ§Ã£o @Valid, valida se o Cliente estÃ¡ vÃ¡lido de acordo com com as regras de validaÃ§Ã£o anotadas na classe Cliente.
 	@PostMapping(path = "/cliente/save")
 	public String saveCliente(@ModelAttribute("cliente") @Valid Cliente cliente, Errors errors, Model model) {
 		
@@ -63,7 +63,7 @@ public class PublicController {
 				model.addAttribute("msg", "Cliente gravado com sucesso!");
 				
 			}catch (ValidationException e) {
-				//A chamada deste método faz o encaixe do th:erros do thymelef com a mensagem tratada da exceção.
+				//A chamada deste mÃ©todo faz o encaixe do th:erros do thymelef com a mensagem tratada da exceÃ§Ã£o.
 				errors.rejectValue("email", null, e.getMessage());
 			}
 			
@@ -82,7 +82,7 @@ public class PublicController {
 				model.addAttribute("msg", "Restaurante gravado com sucesso!");
 				
 			}catch (ValidationException e) {
-				//A chamada deste método faz o encaixe do th:erros do thymelef com a mensagem tratada da exceção.
+				//A chamada deste mÃ©todo faz o encaixe do th:erros do thymelef com a mensagem tratada da exceÃ§Ã£o.
 				errors.rejectValue("email", null, e.getMessage());
 			}
 			

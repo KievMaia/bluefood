@@ -7,13 +7,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class StringUtils {
 
-	//Verifica se a String est· vazia.
+	//Verifica se a String est√° vazia.
 	public static boolean isEmpty(String str) {
 		
 		if (str == null) {
 			return true;
 		}
-		//Se for uma String somente com espaÁos em branco, o .trim().length() pega os espaÁos referente ao tamanho e iguala a zero
+		//Se for uma String somente com espa√ßos em branco, o .trim().length() pega os espa√ßos referente ao tamanho e iguala a zero
 		//tornando-a vazia.
 		return str.trim().length() == 0;
 	}
